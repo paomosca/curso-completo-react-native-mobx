@@ -1,12 +1,14 @@
 import { StyleSheet } from "react-native";
 
+import { Metrics, Colors } from "../../Theme/";
+
 const BARHEIGHT = 56;
 
 export default StyleSheet.create({
   navBar: {
-    marginTop: 20,
-    height: BARHEIGHT,
-    backgroundColor: "#eeeeee",
+    marginTop: Metrics.statusBarHeight,
+    height: Metrics.navBarHeight,
+    backgroundColor: Colors.whiteFull,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -14,7 +16,7 @@ export default StyleSheet.create({
     fontWeight: "bold"
   },
   redBar: {
-    backgroundColor: "#ff0000",
+    backgroundColor: Colors.redFull,
     height: BARHEIGHT * 1.5
   }
 });
