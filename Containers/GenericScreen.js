@@ -9,6 +9,7 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View } from "react-native";
 
+import styles from "./Styles/GenericScreenStyles";
 /*
 
 <screen>
@@ -35,19 +36,3 @@ export default class GenericScreen extends Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  navBar: {
-    marginTop: 20,
-    height: 56,
-    backgroundColor: "#eeeeee",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  title: {
-    fontWeight: "bold"
-  },
-  redBar: {
-    backgroundColor: "#ff0000"
-  }
-});
