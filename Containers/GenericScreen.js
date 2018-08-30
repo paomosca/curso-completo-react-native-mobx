@@ -24,8 +24,22 @@ export default class GenericScreen extends Component<Props> {
   render() {
     return (
       <View>
-        <View>
-          <Text>Title</Text>
+        <View
+          style={{
+            marginTop: 20,
+            height: 56,
+            backgroundColor: "#eeeeee",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "bold"
+            }}
+          >
+            Title
+          </Text>
         </View>
         {/* content goes here */}
       </View>
