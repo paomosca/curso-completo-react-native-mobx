@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { Metrics, Colors } from "../../Theme/";
+import { Metrics, Colors, Fonts } from "../../Theme/";
 
 const BARHEIGHT = 56;
 
@@ -13,6 +13,7 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   title: {
+    ...Fonts.family.recipeNameCard,
     fontWeight: "bold"
   },
   redBar: {
