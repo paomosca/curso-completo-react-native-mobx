@@ -69,7 +69,12 @@ export default class GenericScreen extends Component<Props> {
     console.log("render");
     return (
       <View>
-        <NavBar title="Titulo" style={styles.navBar} />
+        <NavBar
+          leftButton={true}
+          title="Titulo"
+          rightButton={true}
+          favorite={true}
+        />
         {/* content goes here */}
       </View>
     );

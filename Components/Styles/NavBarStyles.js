@@ -9,6 +9,7 @@ export default StyleSheet.create({
     marginTop: Metrics.statusBarHeight,
     height: Metrics.navBarHeight,
     backgroundColor: Colors.whiteFull,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
   },
@@ -16,5 +17,23 @@ export default StyleSheet.create({
     ...Fonts.family.recipeNameCard,
     fontWeight: "bold"
   },
-  favIco: {}
+  favIco: {},
+  leftContainer: {
+    width: Metrics.buttonSize,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  rightContainer: {
+    width: Metrics.buttonSize,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  titleWrapper: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  favorite: {
+    color: Colors.darkOrange
+  }
 });
