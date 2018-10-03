@@ -92,7 +92,7 @@ export default class GenericScreen extends Component<Props> {
 
     const { favorite } = this.state;
     return (
-      <View>
+      <View style={[styles.mainScreen]}>
         <NavBar
           leftButton={true}
           title="Titulo"
@@ -100,7 +100,7 @@ export default class GenericScreen extends Component<Props> {
           onPressFavorite={this.pressFavorite}
           favorite={favorite}
         />
-        {/* content goes here */}
+        <View style={styles.container}>{/* content goes here */}</View>
       </View>
     );
   }
