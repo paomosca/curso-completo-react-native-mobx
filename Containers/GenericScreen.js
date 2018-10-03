@@ -24,11 +24,15 @@ import styles from "./Styles/GenericScreenStyles";
 import NavBar from "../Components/NavBar";
 
 export default class GenericScreen extends Component<Props> {
+  static navigationOptions = {
+    title: "Home"
+  };
   constructor(props) {
     super(props);
 
     this.state = {
-      var1: 5
+      example: 5,
+      favorite: false
     };
     console.log("constructor");
   }
@@ -37,13 +41,31 @@ export default class GenericScreen extends Component<Props> {
     console.log("componentWillMount");
   }
 
+  pressFavorite = () => {
+    const { favorite } = this.state;
+    this.setState({
+      favorite: !favorite
+    });
+  };
   componentDidMount() {
     console.log("componentDidMount");
+
+    const example = this.state.example;
+    this.setState(
+      {
+        example: 3
+      },
+      () => {
+        console.log(this.state.example); // <<---- 3
+      }
+    );
+
+    console.log(this.state.example); // <<---- 5
 
     setTimeout(() => {
       console.log("changing state");
       this.setState({
-        var1: 2
+        example: 2
       });
     }, 500);
   }
@@ -67,13 +89,16 @@ export default class GenericScreen extends Component<Props> {
 
   render() {
     console.log("render");
+
+    const { favorite } = this.state;
     return (
       <View>
         <NavBar
           leftButton={true}
           title="Titulo"
           rightButton={true}
-          favorite={true}
+          onPressFavorite={this.pressFavorite}
+          favorite={favorite}
         />
         {/* content goes here */}
       </View>

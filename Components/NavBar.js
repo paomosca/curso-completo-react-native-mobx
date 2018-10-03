@@ -1,19 +1,31 @@
 import React from "react";
 
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+} from "react-native";
 
-import { createIconSetFromFontello } from "react-native-vector-icons";
-import config from "../Theme/Fonts/config";
-
-const CustomIcon = createIconSetFromFontello(config);
+import CustomIcon from "./CustomIcon";
 
 import styles from "./Styles/NavBarStyles";
 
 class NavBar extends React.Component {
+  pressFavorite = () => {
+    const { onPressFavorite } = this.props;
+    if (typeof onPressFavorite === "function") {
+      onPressFavorite();
+    }
+  };
   backButton = () => {
     const { leftButton } = this.props;
     if (leftButton) {
-      return <CustomIcon name="left" style={styles.favIco} />;
+      return (
+        <TouchableOpacity onPress={() => alert("back")}>
+          <CustomIcon name="left" style={styles.favIco} />
+        </TouchableOpacity>
+      );
     }
   };
 
@@ -22,13 +34,19 @@ class NavBar extends React.Component {
     if (rightButton) {
       if (favorite) {
         return (
-          <CustomIcon
-            name="favorites"
-            style={[styles.barButtonIco, styles.favorite]}
-          />
+          <TouchableWithoutFeedback onPress={this.pressFavorite}>
+            <CustomIcon
+              name="favorites"
+              style={[styles.barButtonIco, styles.favorite]}
+            />
+          </TouchableWithoutFeedback>
         );
       } else {
-        return <CustomIcon name="favorites" style={[styles.barButtonIco]} />;
+        return (
+          <TouchableWithoutFeedback onPress={this.pressFavorite}>
+            <CustomIcon name="favorites" style={[styles.barButtonIco]} />
+          </TouchableWithoutFeedback>
+        );
       }
     }
   };

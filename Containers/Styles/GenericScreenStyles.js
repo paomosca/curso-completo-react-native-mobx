@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 
-import { Metrics, Colors, Fonts } from "../../Theme/";
+import { Metrics, AppStyles, Colors, Fonts } from "../../Theme/";
 
 const BARHEIGHT = 56;
 
 export default StyleSheet.create({
+  ...AppStyles.screen,
   navBar: {
     marginTop: Metrics.statusBarHeight,
     height: Metrics.navBarHeight,
