@@ -6,18 +6,6 @@ import Colors from "./Colors";
 // Similar to an XML fragment layout in Android
 
 const AppStyles = {
-  common: {
-    standardButton: {
-      height: Metrics.buttonHeight,
-      borderRadius: Metrics.buttonRadius,
-      justifyContent: "center"
-    },
-    rightButton: {
-      width: 50,
-      justifyContent: "center",
-      alignItems: "center"
-    }
-  },
   screen: {
     mainScreen: {
       flex: 1,

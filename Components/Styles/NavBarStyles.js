@@ -6,16 +6,17 @@ const BARHEIGHT = 56;
 
 export default StyleSheet.create({
   navBar: {
-    marginTop: Metrics.statusBarHeight,
+    paddingTop: Metrics.statusBarHeight,
     height: Metrics.navBarHeight,
     backgroundColor: Colors.whiteFull,
+    backgroundColor: Colors.mainBackground,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start"
   },
   title: {
-    ...Fonts.family.recipeNameCard,
-    fontWeight: "bold"
+    ...Fonts.style.h3,
+    color: Colors.black
   },
   favIco: {},
   leftContainer: {

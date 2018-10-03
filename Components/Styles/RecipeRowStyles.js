@@ -47,5 +47,25 @@ export default StyleSheet.create({
     lineHeight: 24,
     letterSpacing: 0.5,
     color: Colors.mediumGrey
+  },
+  title: {
+    fontFamily: Fonts.family.base,
+    fontSize: 16,
+    fontWeight: "500",
+    fontStyle: "normal",
+    lineHeight: 24,
+    letterSpacing: 0.5,
+    textAlign: "left",
+    color: Colors.black
+  },
+  category: {
+    fontFamily: Fonts.family.base,
+    fontSize: 10,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    lineHeight: 24,
+    letterSpacing: 1,
+    color: Colors.darkGrey,
+    textAlign: "left"
   }
 });

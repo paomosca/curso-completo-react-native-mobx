@@ -47,9 +47,10 @@ export default class ExploreScreen extends Component {
     return (
       <View style={[styles.mainScreen]}>
         <NavBar leftButton={false} title="Explore" rightButton={false} />
-        <RecipeRow data={recipeDate} />
 
-        <View style={styles.container}>{/* content goes here */}</View>
+        <View style={styles.container}>
+          <RecipeRow data={recipeDate} />
+        </View>
       </View>
     );
   }

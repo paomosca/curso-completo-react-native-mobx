@@ -2,10 +2,14 @@ import { StyleSheet } from "react-native";
 
 import { Metrics, AppStyles, Colors, Fonts } from "../../Theme/";
 
-const BARHEIGHT = 56;
-
 export default StyleSheet.create({
   ...AppStyles.screen,
+  container: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "stretch",
+    backgroundColor: Colors.mainBackground
+  },
   navBar: {
     marginTop: Metrics.statusBarHeight,
     height: Metrics.navBarHeight,
@@ -16,9 +20,5 @@ export default StyleSheet.create({
   title: {
     ...Fonts.family.recipeNameCard,
     fontWeight: "bold"
-  },
-  redBar: {
-    backgroundColor: Colors.redFull,
-    height: BARHEIGHT * 1.5
   }
 });

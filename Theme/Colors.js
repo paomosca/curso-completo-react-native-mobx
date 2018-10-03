@@ -1,4 +1,5 @@
 const colors = {
+  mainBackground: "#f7f7f7",
   transparent: "rgba(0,0,0,0)",
   blackFull: "#333333",
   redFull: "#ff0000",
