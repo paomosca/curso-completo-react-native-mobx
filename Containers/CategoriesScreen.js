@@ -11,6 +11,8 @@ import { Text, StyleSheet, View, FlatList } from "react-native";
 
 import CategoryRow from "../Components/CategoryRow";
 
+import TabBar from "../Components/TabBar";
+
 import styles from "./Styles/CategoriesScreenStyles";
 
 const categoriesData = [
@@ -67,6 +69,7 @@ class CategoriesScreen extends Component {
       <View style={[styles.mainScreen]}>
         <NavBar leftButton={false} title="Categories" />
         <View style={styles.container}>{this.renderList()}</View>
+        <TabBar selected="categories" />
       </View>
     );
   }

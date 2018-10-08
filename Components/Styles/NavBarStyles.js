@@ -14,6 +14,17 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start"
   },
+  alternate: {
+    color: Colors.whiteFull
+  },
+  transparent: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "transparent",
+    zIndex: 10
+  },
   title: {
     ...Fonts.style.h3,
     color: Colors.black

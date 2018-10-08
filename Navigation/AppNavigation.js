@@ -6,6 +6,7 @@ import {
 import GenericScreen from "../Containers/GenericScreen";
 import ExploreScreen from "../Containers/ExploreScreen";
 import CategoriesScreen from "../Containers/CategoriesScreen";
+import RecipeDetailsScreen from "../Containers/RecipeDetailsScreen";
 
 const TabNav = createBottomTabNavigator(
   {
@@ -15,13 +16,15 @@ const TabNav = createBottomTabNavigator(
   },
   {
     headerMode: "none",
-    initialRouteName: "Explore"
+    initialRouteName: "Explore",
+    navigationOptions: { tabBarVisible: false }
   }
 );
 
 const AppNavigator = createStackNavigator(
   {
-    Home: { screen: TabNav }
+    Home: { screen: TabNav },
+    Details: { screen: RecipeDetailsScreen }
   },
   {
     headerMode: "none"

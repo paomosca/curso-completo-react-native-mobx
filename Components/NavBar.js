@@ -11,7 +11,13 @@ import CustomIcon from "./CustomIcon";
 
 import styles from "./Styles/NavBarStyles";
 
+import { withNavigation } from "react-navigation";
+
 class NavBar extends React.Component {
+  goBack = () => {
+    const { navigation } = this.props;
+    navigation.goBack();
+  };
   pressFavorite = () => {
     const { onPressFavorite } = this.props;
     if (typeof onPressFavorite === "function") {
@@ -19,18 +25,21 @@ class NavBar extends React.Component {
     }
   };
   backButton = () => {
-    const { leftButton } = this.props;
+    const { leftButton, transparent } = this.props;
     if (leftButton) {
       return (
-        <TouchableOpacity onPress={() => alert("back")}>
-          <CustomIcon name="left" style={styles.favIco} />
+        <TouchableOpacity onPress={this.goBack}>
+          <CustomIcon
+            name="left"
+            style={[styles.favIco, transparent ? styles.alternate : null]}
+          />
         </TouchableOpacity>
       );
     }
   };
 
   rightButton = () => {
-    const { rightButton, favorite } = this.props;
+    const { rightButton, favorite, transparent } = this.props;
     if (rightButton) {
       if (favorite) {
         return (
@@ -44,16 +53,25 @@ class NavBar extends React.Component {
       } else {
         return (
           <TouchableWithoutFeedback onPress={this.pressFavorite}>
-            <CustomIcon name="favorites" style={[styles.barButtonIco]} />
+            <CustomIcon
+              name="favorites"
+              style={[
+                styles.barButtonIco,
+                transparent ? styles.alternate : null
+              ]}
+            />
           </TouchableWithoutFeedback>
         );
       }
     }
   };
   render() {
-    const { title } = this.props;
+    const { title, transparent } = this.props;
     return (
-      <View {...this.props} style={styles.navBar}>
+      <View
+        {...this.props}
+        style={[styles.navBar, transparent ? styles.transparent : null]}
+      >
         <View style={styles.leftContainer}>{this.backButton()}</View>
         <View style={styles.titleWrapper}>
           <Text style={styles.title}>{title}</Text>
@@ -64,4 +82,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withNavigation(NavBar);
