@@ -14,6 +14,7 @@ import styles from "./Styles/ExploreScreenStyles";
 import NavBar from "../Components/NavBar";
 import TabBar from "../Components/TabBar";
 import RecipeRow from "../Components/RecipeRow";
+import RecommendationBox from "../Components/RecommendationBox";
 
 const dataList = [
   {
@@ -93,11 +94,16 @@ export default class ExploreScreen extends Component {
   renderList = () => {
     return (
       <FlatList
+        ListHeaderComponent={this.renderRecommended}
         keyExtractor={this.keyExtractor}
         data={dataList}
         renderItem={({ item }) => <RecipeRow data={item} />}
       />
     );
+  };
+
+  renderRecommended = () => {
+    return <RecommendationBox data={dataList} />;
   };
   render() {
     console.log("render");
