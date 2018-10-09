@@ -16,6 +16,9 @@ import TabBar from "../Components/TabBar";
 import RecipeRow from "../Components/RecipeRow";
 import RecommendationBox from "../Components/RecommendationBox";
 
+import { observable } from "mobx";
+import { observer } from "mobx-react/native";
+
 const dataList = [
   {
     id: "1111",
@@ -80,14 +83,19 @@ const recipeDate = {
   photo: "https://www.themealdb.com/images/media/meals/1520084413.jpg"
 };
 
-export default class ExploreScreen extends Component {
-  static navigationOptions = {
-    title: "Explore"
-  };
+@observer
+class ExploreScreen extends Component {
+  counter = 0;
+
   constructor(props) {
     super(props);
 
     console.log("constructor");
+
+    setInterval(() => {
+      this.counter++;
+      console.log("this.counter:", this.counter);
+    }, 1000);
   }
 
   keyExtractor = (item, index) => item.id;
@@ -110,7 +118,11 @@ export default class ExploreScreen extends Component {
 
     return (
       <View style={[styles.mainScreen]}>
-        <NavBar leftButton={false} title="Explore" rightButton={false} />
+        <NavBar
+          leftButton={false}
+          title={`Title - ${this.counter}`}
+          rightButton={false}
+        />
 
         <View style={styles.container}>{this.renderList()}</View>
         <TabBar selected="explore" />
@@ -118,3 +130,4 @@ export default class ExploreScreen extends Component {
     );
   }
 }
+export default ExploreScreen;

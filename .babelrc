@@ -1,3 +1,19 @@
 {
-  "presets": ["react-native"]
+  presets: ["react-native"],
+  plugins: [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        legacy: true
+      }
+    ],
+    [
+      "@babel/transform-runtime",
+      {
+        helpers: true,
+        polyfill: false,
+        regenerator: false
+      }
+    ]
+  ]
 }
