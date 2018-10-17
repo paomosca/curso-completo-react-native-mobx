@@ -15,27 +15,12 @@ import TabBar from "../Components/TabBar";
 
 import styles from "./Styles/CategoriesScreenStyles";
 
-const categoriesData = [
-  {
-    id: "1",
-    name: "Fish"
-  },
-  {
-    id: "2",
-    name: "Meat"
-  },
-  {
-    id: "3",
-    name: "Breakfast"
-  },
-  {
-    id: "4",
-    name: "Fruit"
-  }
-];
+import { observer, inject } from "mobx-react/native";
 
 import NavBar from "../Components/NavBar";
 
+@inject("recipes")
+@observer
 class CategoriesScreen extends Component {
   static navigationOptions = {
     title: "Categories"
@@ -45,6 +30,11 @@ class CategoriesScreen extends Component {
     console.log("constructor");
   }
 
+  componentDidMount = () => {
+    const { recipes } = this.props;
+    recipes.getCategories();
+  };
+
   keyExtractor = (item, index) => item.id;
 
   renderRow = ({ item }) => {
@@ -52,11 +42,12 @@ class CategoriesScreen extends Component {
   };
 
   renderList = () => {
+    const { recipes } = this.props;
     return (
       <FlatList
         contentContainerStyle={styles.listContent}
         keyExtractor={this.keyExtractor}
-        data={categoriesData}
+        data={recipes.categoriesSource}
         renderItem={this.renderRow}
       />
     );

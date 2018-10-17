@@ -1,7 +1,5 @@
 import { observable, computed, configure, action } from "mobx";
 
-configure({ enforceActions: "always" });
-
 class TestStore {
   @observable counter = 0;
   timer = null;
