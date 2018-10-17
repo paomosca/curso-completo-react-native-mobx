@@ -17,7 +17,9 @@ import RecipeRow from "../Components/RecipeRow";
 import RecommendationBox from "../Components/RecommendationBox";
 
 import { observable } from "mobx";
-import { observer } from "mobx-react/native";
+import { observer, inject } from "mobx-react/native";
+
+import TestStore from "../MobX/TestStore";
 
 const dataList = [
   {
@@ -83,20 +85,30 @@ const recipeDate = {
   photo: "https://www.themealdb.com/images/media/meals/1520084413.jpg"
 };
 
+@inject("test")
 @observer
 class ExploreScreen extends Component {
   counter = 0;
 
+  timer = null;
   constructor(props) {
     super(props);
 
     console.log("constructor");
-
+    const { test } = this.props;
+    test.start();
     /*setInterval(() => {
       this.counter++;
       console.log("this.counter:", this.counter);
     }, 1000);*/
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    const { test } = this.props;
+    if (test.counter >= 5) {
+      test.stop();
+    }
+  };
 
   keyExtractor = (item, index) => item.id;
   renderList = () => {
@@ -115,12 +127,12 @@ class ExploreScreen extends Component {
   };
   render() {
     console.log("render");
-
+    const { test } = this.props;
     return (
       <View style={[styles.mainScreen]}>
         <NavBar
           leftButton={false}
-          title={`Title - ${this.counter}`}
+          title={`Title - ${test.doubleValue}`}
           rightButton={false}
         />
 
