@@ -92,10 +92,10 @@ class ExploreScreen extends Component {
 
     console.log("constructor");
 
-    setInterval(() => {
+    /*setInterval(() => {
       this.counter++;
       console.log("this.counter:", this.counter);
-    }, 1000);
+    }, 1000);*/
   }
 
   keyExtractor = (item, index) => item.id;
