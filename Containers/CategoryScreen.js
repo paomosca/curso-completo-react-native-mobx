@@ -16,30 +16,31 @@ import TabBar from "../Components/TabBar";
 import RecipeRow from "../Components/RecipeRow";
 import RecommendationBox from "../Components/RecommendationBox";
 
+import RecipeStore from "../MobX/RecipeStore";
+
 import { observer, inject } from "mobx-react/native";
 
-@inject("recipes")
 @observer
 export default class CategoryScreen extends Component {
   constructor(props) {
     super(props);
 
+    this.recipeStore = new RecipeStore();
     console.log("constructor");
   }
 
   componentDidMount = () => {
     console.log("componentDidMount CategoryScreen");
-    const { navigation, recipes } = this.props;
+    const { navigation } = this.props;
     const category = navigation.getParam("category", {});
-    recipes.getRecipes(category.id);
+    this.recipeStore.getRecipes(category.id);
   };
   keyExtractor = (item, index) => item.id;
   renderList = () => {
-    const { recipes } = this.props;
     return (
       <FlatList
         keyExtractor={this.keyExtractor}
-        data={recipes.recipesSource}
+        data={this.recipeStore.recipesSource}
         renderItem={({ item }) => <RecipeRow data={item} />}
       />
     );
