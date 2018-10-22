@@ -1,5 +1,8 @@
 import { observable, computed } from "mobx";
 
+import API from "../Services/Api";
+const api = API.create();
+
 const categoriesData = [
   {
     id: "1",
@@ -90,7 +93,8 @@ class RecipeStore {
   get recommendedSource() {
     return this.recommended.slice();
   }
-  getCategories() {
+
+  async getCategories() {
     /*
     connecting server (loading true)
     asking categories
@@ -99,10 +103,14 @@ class RecipeStore {
     */
 
     this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.categories = categoriesData;
-    }, 1000);
+    const response = await api.getCategories();
+    console.log("response", response);
+    this.loading = false;
+    if (response.ok && response.data) {
+      this.categories = response.data;
+    } else {
+      this.categories = [];
+    }
   }
   getFavorites() {
     this.loading = true;
