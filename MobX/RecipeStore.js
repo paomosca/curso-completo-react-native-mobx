@@ -112,33 +112,43 @@ class RecipeStore {
       this.categories = [];
     }
   }
-  getFavorites() {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.favorites = dataList;
-    }, 1000);
-  }
-  getRecommended() {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.recommended = dataList;
-    }, 1000);
-  }
-  getRecipes(categoryId = null) {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
 
-      if (categoryId) {
-        this.recipes = dataList.filter(item => {
-          return item.categoryId == categoryId;
-        });
-      } else {
-        this.recipes = dataList;
-      }
-    }, 1000);
+  async getRecipes(categoryId = null) {
+    this.loading = true;
+
+    const response = await api.getRecipes(categoryId || null);
+    console.log("response getRecipes", response);
+    this.loading = false;
+    if (response.ok && response.data) {
+      this.recipes = response.data;
+    } else {
+      this.recipes = [];
+    }
+  }
+
+  async getFavorites() {
+    this.loading = true;
+    const response = await api.getFavorites();
+    console.log("response", response);
+    this.loading = false;
+    if (response.ok && response.data) {
+      this.favorites = response.data;
+    } else {
+      this.favorites = [];
+    }
+  }
+
+  async getRecommended() {
+    this.loading = true;
+    const response = await api.getRecommended();
+    console.log("response getRecommended", response);
+
+    this.loading = false;
+    if (response.ok && response.data) {
+      this.recommended = response.data;
+    } else {
+      this.recommended = [];
+    }
   }
 }
 
