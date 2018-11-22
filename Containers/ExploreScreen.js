@@ -58,7 +58,12 @@ class ExploreScreen extends Component {
     console.log("render");
     return (
       <View style={[styles.mainScreen]}>
-        <NavBar leftButton={false} title={`Explore`} rightButton={false} />
+        <NavBar
+          menuButton={true}
+          leftButton={false}
+          title={`Explore`}
+          rightButton={false}
+        />
 
         <View style={styles.container}>{this.renderList()}</View>
         <TabBar selected="explore" />

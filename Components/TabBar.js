@@ -46,7 +46,7 @@ class TabBar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.renderTab({ route: "explore", icon: "home-1" })}
+        {this.renderTab({ route: "explore", icon: "home" })}
         {this.renderTab({ route: "categories", icon: "recipes" })}
         {this.renderTab({ route: "favorites", icon: "favorites" })}
       </View>

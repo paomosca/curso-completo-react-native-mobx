@@ -18,6 +18,11 @@ class NavBar extends React.Component {
     const { navigation } = this.props;
     navigation.goBack();
   };
+
+  openMenu = () => {
+    const { navigation } = this.props;
+    navigation.openDrawer();
+  };
   pressFavorite = () => {
     const { onPressFavorite } = this.props;
     if (typeof onPressFavorite === "function") {
@@ -33,6 +38,16 @@ class NavBar extends React.Component {
             name="left"
             style={[styles.favIco, transparent ? styles.alternate : null]}
           />
+        </TouchableOpacity>
+      );
+    }
+  };
+  menuButton = () => {
+    const { menuButton } = this.props;
+    if (menuButton) {
+      return (
+        <TouchableOpacity onPress={this.openMenu}>
+          <CustomIcon name="menu" style={styles.favIco} />
         </TouchableOpacity>
       );
     }
@@ -72,7 +87,10 @@ class NavBar extends React.Component {
         {...this.props}
         style={[styles.navBar, transparent ? styles.transparent : null]}
       >
-        <View style={styles.leftContainer}>{this.backButton()}</View>
+        <View style={styles.leftContainer}>
+          {this.backButton()}
+          {this.menuButton()}
+        </View>
         <View style={styles.titleWrapper}>
           <Text style={styles.title}>{title}</Text>
         </View>

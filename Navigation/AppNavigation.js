@@ -1,6 +1,7 @@
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createDrawerNavigator
 } from "react-navigation";
 
 import GenericScreen from "../Containers/GenericScreen";
@@ -10,6 +11,9 @@ import RecipeDetailsScreen from "../Containers/RecipeDetailsScreen";
 
 import FavoritesScreen from "../Containers/FavoritesScreen";
 import CategoryScreen from "../Containers/CategoryScreen";
+
+import InfoScreen from "../Containers/InfoScreen";
+import SideMenu from "../Components/SideMenu";
 
 const TabNav = createBottomTabNavigator(
   {
@@ -24,9 +28,20 @@ const TabNav = createBottomTabNavigator(
   }
 );
 
+const Drawer = createDrawerNavigator(
+  {
+    Tabs: {
+      screen: TabNav
+    },
+    Info: { screen: InfoScreen }
+  },
+  {
+    contentComponent: SideMenu
+  }
+);
 const AppNavigator = createStackNavigator(
   {
-    Home: { screen: TabNav },
+    Home: { screen: Drawer },
     Details: { screen: RecipeDetailsScreen },
     Category: { screen: CategoryScreen }
   },
